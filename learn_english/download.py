@@ -77,11 +77,14 @@ class downloadTread(QtCore.QThread):
                     else:
                         self.change_value.emit(len(files))
 
-                    if not Path(f".\Sounds\{str(self.index)}.mp3").stat().st_size < 1:
-                        self.index+=1
-                    else:
-                        os.chdir(mainFolder)
-                        os.remove(f".\Sounds\{str(self.index)}.mp3")
+                    try:
+                        if not Path(f".\Sounds\{str(self.index)}.mp3").stat().st_size < 1:
+                            self.index+=1
+                        else:
+                            os.chdir(mainFolder)
+                            os.remove(f".\Sounds\{str(self.index)}.mp3")
+                    except:
+                        pass
                 else:
                     self.index+=1
             else:
