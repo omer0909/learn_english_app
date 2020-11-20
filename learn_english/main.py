@@ -2,7 +2,7 @@ import sys
 from PySide2.QtWidgets import *
 import random
 import save
-from worlds import *
+from words import *
 from window import Ui_Form
 import sound
 import download
@@ -19,7 +19,7 @@ class SceneClass():
         self.ui=ui.ui
         self.level=self.ui.comboBox.currentIndex()
         self.mixer(self.ui.spinBox.value())
-        self.worldIndex=0
+        self.wordIndex=0
         self.ui.lineEdit.returnPressed.connect(self.control)
         self.selectTuple()
         self.viewer()
@@ -35,8 +35,8 @@ class SceneClass():
     def checkBoxBool(self,value):
         self.getBool=value
 
-    def worldSound(self):
-        sound.Say(self.words[self.worldIndex]+self.level*200,self.english[self.words[self.worldIndex]])
+    def wordSound(self):
+        sound.Say(self.words[self.wordIndex]+self.level*200,self.english[self.words[self.wordIndex]])
 
     def record(self):
         self.ui.lineEdit.setText(sound.Record())
@@ -50,32 +50,32 @@ class SceneClass():
 
     def selectTuple(self):
         if self.level==0:
-            self.turkish=worldsTr1
-            self.english=worldsEn1
+            self.turkish=wordsTr1
+            self.english=wordsEn1
         if self.level==1:
-            self.turkish=worldsTr2
-            self.english=worldsEn2
+            self.turkish=wordsTr2
+            self.english=wordsEn2
         if self.level==2:
-            self.turkish=worldsTr3
-            self.english=worldsEn3
+            self.turkish=wordsTr3
+            self.english=wordsEn3
         if self.level==3:
-            self.turkish=worldsTr4
-            self.english=worldsEn4
+            self.turkish=wordsTr4
+            self.english=wordsEn4
         if self.level==4:
-            self.turkish=worldsTr5
-            self.english=worldsEn5
+            self.turkish=wordsTr5
+            self.english=wordsEn5
 
     def viewer(self):
-        self.ui.soru.setText(self.turkish[self.words[self.worldIndex]])
+        self.ui.soru.setText(self.turkish[self.words[self.wordIndex]])
         record=save.Get(0)
         if((self.level+1)*200<=record):
             value=200
         else:
             value=record%200
-        self.ui.label_2.setText(str(self.worldIndex+1)+"/"+ str(value))
+        self.ui.label_2.setText(str(self.wordIndex+1)+"/"+ str(value))
 
     def control(self):
-        if self.english[self.words[self.worldIndex]].strip().lower()==self.ui.lineEdit.text().strip().lower():
+        if self.english[self.words[self.wordIndex]].strip().lower()==self.ui.lineEdit.text().strip().lower():
             self.scoreTable()
 
         self.ui.lineEdit.setText("")
@@ -87,15 +87,15 @@ class SceneClass():
 
     def scoreTable(self):
         if self.getBool:
-            self.worldSound()
+            self.wordSound()
 
-        self.worldIndex+=1
+        self.wordIndex+=1
         record=save.Get(0)
-        if record < self.worldIndex+(self.level*200):
+        if record < self.wordIndex+(self.level*200):
             record+=1
             save.Set(0,record)
             
-        if(self.worldIndex==200):
+        if(self.wordIndex==200):
             self.ui.stackedWidget.setCurrentIndex(0)
             self.ui.label_4.setText("Record: "+ str(save.Get(0)))
             self.uiClass.levelEditor()
