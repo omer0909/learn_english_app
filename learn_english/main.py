@@ -45,7 +45,7 @@ class SceneClass():
     def answer(self):
         message=QMessageBox()
         message.setWindowTitle("Answer")
-        message.setText(self.english[self.words[self.worldIndex]])
+        message.setText(self.english[self.words[self.wordIndex]])
         message.exec_()
 
     def selectTuple(self):
