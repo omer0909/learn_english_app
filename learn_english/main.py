@@ -75,7 +75,7 @@ class SceneClass():
         self.ui.label_2.setText(str(self.worldIndex+1)+"/"+ str(value))
 
     def control(self):
-        if self.english[self.words[self.worldIndex]]==self.ui.lineEdit.text().strip():
+        if self.english[self.words[self.worldIndex]].strip().lower()==self.ui.lineEdit.text().strip().lower():
             self.scoreTable()
 
         self.ui.lineEdit.setText("")
