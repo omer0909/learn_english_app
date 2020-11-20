@@ -25,7 +25,7 @@ class SceneClass():
         self.viewer()
         self.ui.pushButton_6.clicked.connect(self.answer)
         self.ui.pushButton_4.clicked.connect(self.record)
-        self.ui.pushButton_5.clicked.connect(self.worldSound)
+        self.ui.pushButton_5.clicked.connect(self.wordSound)
         self.ui.lineEdit.setText("")
         self.getBool=False
         self.ui.checkBox.setChecked(False)
