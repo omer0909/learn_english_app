@@ -2,7 +2,7 @@ from PySide2 import QtWidgets,QtCore
 from gtts import gTTS
 import os
 from save import mainFolder
-from worlds import *
+from words import *
 from downloadUi import*
 import time
 from pathlib import Path
@@ -56,19 +56,19 @@ class downloadTread(QtCore.QThread):
             files=os.listdir(".\Sounds")
             if 1000 > len(files):
                 if not (str(self.index)+".mp3") in files:
-                    World=""
+                    Word=""
                     if self.index <200:
-                        World=worldsEn1[self.index]
+                        Word=wordsEn1[self.index]
                     elif self.index <400:
-                        World=worldsEn2[self.index%200]
+                        Word=wordsEn2[self.index%200]
                     elif self.index <600:
-                        World=worldsEn3[self.index%200]
+                        Word=wordsEn3[self.index%200]
                     elif self.index <800:
-                        World=worldsEn4[self.index%200]
+                        Word=wordsEn4[self.index%200]
                     else:
-                        World=worldsEn5[self.index%200]
+                        Word=wordsEn5[self.index%200]
                     try:
-                        sound=gTTS(text=World,lang="en")
+                        sound=gTTS(text=Word,lang="en")
                         os.chdir(mainFolder)
                         sound.save(f".\Sounds\{str(self.index)}.mp3")
                     except:
