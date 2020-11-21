@@ -9,10 +9,14 @@ def Say(index,World):
     if (str(index)+".mp3") in os.listdir(".\Sounds"):
         playsound(f".\Sounds\{str(index)}.mp3")
     else:
-        sound=gTTS(text=World,lang="en")
-        os.chdir(mainFolder)
-        sound.save(f".\Sounds\{str(index)}.mp3")
-        playsound(f".\Sounds\{str(index)}.mp3")
+        try:
+            sound=gTTS(text=World,lang="en")
+            os.chdir(mainFolder)
+            sound.save(f".\Sounds\{str(index)}.mp3")
+        except:
+            os.remove(f".\Sounds\{str(index)}.mp3")
+        else:
+            playsound(f".\Sounds\{str(index)}.mp3")
 
 
 def Record():
