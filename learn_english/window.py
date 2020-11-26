@@ -222,7 +222,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Learn English", None))
-        self.label.setText(QCoreApplication.translate("Form", u"LEARN ENGL\u0130SH", None))
+        self.label.setText(QCoreApplication.translate("Form", u"LEARN ENGLISH", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"Record:", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Mix", None))
         self.pushButton_2.setText(QCoreApplication.translate("Form", u"Play Level", None))
